@@ -1,0 +1,75 @@
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/keys.h>
+
+/ {
+    combos { compatible = "zmk,combos"; };
+
+    behaviors {
+        hm: hm {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM";
+            bindings = <&kp>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            flavor = "balanced";
+            hold-trigger-on-release;
+            hold-trigger-key-positions = <31 0 1 2 3 4 10 11 12 13 14 20 21 22 23 24 30 31 31 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33>;
+        };
+
+        hml: hml {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HML";
+            bindings = <&mo>, <&kp>;
+
+            #binding-cells = <2>;
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            hold-trigger-key-positions = <30 31 32 33>;
+            hold-trigger-on-release;
+            flavor = "balanced";
+        };
+    };
+
+    keymap {
+        compatible = "zmk,keymap";
+
+        default_layer {
+            bindings = <
+&kp Q       &kp W       &kp E         &kp R          &kp T          &kp Y         &kp U        &kp I        &kp O       &kp P
+&hm LGUI A  &hm LALT S  &hm LSHIFT D  &hm LCTRL F    &kp G          &kp H         &hm LCTRL J  &hm LSHFT K  &hm LALT L  &hm LGUI SEMICOLON
+&kp Z       &kp X       &kp C         &kp V          &kp B          &kp N         &kp M        &kp COMMA    &kp DOT     &kp FSLH
+                                      &kp BACKSPACE  &hml 1 ESCAPE  &hml 2 ENTER  &kp SPACE
+            >;
+        };
+
+        layer_1 {
+            bindings = <
+&kp N1    &kp N2  &kp N3     &kp N4     &kp N5  &kp N6  &kp N7         &kp N8        &kp N9        &kp N0
+&kp LEFT  &kp UP  &kp DOWN   &kp RIGHT  &none   &none   &kp LS(LBRC)   &kp LS(RBRC)  &kp LBKT      &kp RBKT
+&none     &none   &kp LSHFT  &kp LCTRL  &none   &none   &kp LS(UNDER)  &kp MINUS     &kp LS(PLUS)  &kp EQUAL
+                             &none      &none   &mo 3   &kp TAB
+            >;
+        };
+
+        layer_2 {
+            bindings = <
+&kp LS(EXCL)  &kp LS(AT)     &kp LS(POUND)  &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)  &kp LS(AMPS)  &kp LS(STAR)  &kp LS(LPAR)  &kp LS(RPAR)
+&kp GRAVE     &kp LS(TILDE)  &kp SQT        &kp LS(DQT)   &kp EQUAL      &kp LEFT       &kp UP        &kp DOWN      &kp RIGHT     &none
+&kp CAPS      &none          &kp BSLH       &kp LS(PIPE)  &none          &kp LS(UNDER)  &kp RCTRL     &kp RSHFT     &kp C_VOL_DN  &kp C_VOLUME_UP
+                                            &kp DEL       &mo 3          &none          &none
+            >;
+        };
+
+        layer_3 {
+            bindings = <
+&kp N1        &kp N2        &kp N3        &kp N4        &kp N5        &kp N6      &kp N7     &kp N8     &kp N9    &kp N0
+&none         &none         &none         &none         &none         &none       &kp LCTRL  &kp LSHFT  &kp LALT  &kp LGUI
+&bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR  &none      &none      &none     &kp CAPS
+                                          &none         &none         &none       &none
+            >;
+        };
+    };
+};
