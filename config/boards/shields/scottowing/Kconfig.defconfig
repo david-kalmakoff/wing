@@ -1,6 +1,6 @@
-if SHIELD_SCOTTOWING
+if SHIELD_SWEEPWING
 
 config ZMK_KEYBOARD_NAME
-    default "ScottoWing"
+    default "SweepWng"
 
 endif
