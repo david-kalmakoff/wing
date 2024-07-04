@@ -1,8 +1,8 @@
 .PHONY: build
 build:
 	( cd ~/dev/zmk/app \
-	rm -rf ~/dev/zmk/app/boards/shields/sweepwing \
-	cp -r ./config/boards/shields/sweepwing ~/dev/zmk/app/boards/shields/ \
+	&& rm -rf ~/dev/zmk/app/boards/shields/sweepwing \
+	&& cp -r ~/dev/zmk-config-sweep-wing/config/boards/shields/sweepwing ~/dev/zmk/app/boards/shields/ \
 	&& west build --build-dir ~/dev/zmk-config-sweep-wing/build \
 	--board nice_nano_v2 -- \
 	-DSHIELD=sweepwing \
